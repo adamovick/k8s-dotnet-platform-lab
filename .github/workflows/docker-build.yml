@@ -26,8 +26,8 @@ jobs:
 
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/adamovick/k8s-dotnet-lab:v5 -f docker/Dockerfile .
+        run: docker build -t ghcr.io/adamovick/k8s-dotnet-lab:v6 -f docker/Dockerfile .
 
 
       - name: Push Docker image
-        run: docker push ghcr.io/adamovick/k8s-dotnet-lab:v5
+        run: docker push ghcr.io/adamovick/k8s-dotnet-lab:v6
