@@ -23,6 +23,6 @@ app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
-app.MapGet("/health", () => "OK");
+app.MapGet("/health", () => Results.StatusCode(500));
 
 app.Run();
