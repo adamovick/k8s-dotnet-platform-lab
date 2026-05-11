@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dotnet-webapp
+  name: dotnet-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-webapp
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: dotnet-webapp
+    spec:
+      containers:
+      - image: ghcr.io/adamovick/k8s-dotnet-lab:v3
+        name: k8s-dotnet-lab
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources: {}
+status: {}

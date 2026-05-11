@@ -8,6 +8,7 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
 
     public string WelcomeMessage { get; set; } = "";
+    public string ContactEmail { get; set; } = "";
 
     public IndexModel(ILogger<IndexModel> logger)
     {
@@ -19,5 +20,8 @@ public class IndexModel : PageModel
         WelcomeMessage =
             Environment.GetEnvironmentVariable("WELCOME_MESSAGE")
             ?? "Hello from default app configuration";
+        ContactEmail =
+            Environment.GetEnvironmentVariable("CONTACT_EMAIL")
+            ?? "contact unavailable";
     }
 }
