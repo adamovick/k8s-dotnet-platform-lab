@@ -25,7 +25,7 @@ public class IndexModel : PageModel
             Environment.GetEnvironmentVariable("CONTACT_EMAIL")
             ?? "contact unavailable";
         PodName =
-        Environment.GetEnvironmentVariable("HOSTNAME")
-        ?? "unknown pod";
+            Environment.GetEnvironmentVariable("HOSTNAME")
+            ?? "unknown pod";
     }
 }
