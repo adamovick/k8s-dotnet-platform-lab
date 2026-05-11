@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: dotnet-webapp-ingress
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+
+  - host: kral.local
+
+    http:
+
+      paths:
+
+      - path: /
+        pathType: Prefix
+
+        backend:
+
+          service:
+            name: dotnet-webapp
+
+            port:
+              number: 80
