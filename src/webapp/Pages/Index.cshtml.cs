@@ -9,6 +9,7 @@ public class IndexModel : PageModel
 
     public string WelcomeMessage { get; set; } = "";
     public string ContactEmail { get; set; } = "";
+    public string PodName { get; set; } = "";
 
     public IndexModel(ILogger<IndexModel> logger)
     {
@@ -23,5 +24,8 @@ public class IndexModel : PageModel
         ContactEmail =
             Environment.GetEnvironmentVariable("CONTACT_EMAIL")
             ?? "contact unavailable";
+        PodName =
+        Environment.GetEnvironmentVariable("HOSTNAME")
+        ?? "unknown pod";
     }
 }
