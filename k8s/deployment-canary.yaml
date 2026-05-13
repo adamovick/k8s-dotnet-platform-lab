@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: dotnet-webapp-canary
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: dotnet-webapp
+      version: canary
+
+  template:
+
+    metadata:
+      labels:
+        app: dotnet-webapp
+        version: canary
+
+    spec:
+
+      containers:
+
+      - name: k8s-dotnet-lab
+
+        image: ghcr.io/adamovick/k8s-dotnet-lab:v10
+
+        env:
+
+        - name: WELCOME_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: WELCOME_MESSAGE
+
+        - name: CONTACT_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: webapp-secret
+              key: CONTACT_EMAIL
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5

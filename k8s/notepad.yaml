@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: lab-notepad
+
+spec:
+  containers:
+
+  - name: notepad
+
+    image: busybox
+
+    command:
+      - sleep
+      - "999999"
+
+    volumeMounts:
+
+    - name: data
+
+      mountPath: /data
+
+  volumes:
+
+  - name: data
+
+    persistentVolumeClaim:
+      claimName: lab-notepad-pvc

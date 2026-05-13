@@ -9,7 +9,7 @@ spec:
 
   rules:
 
-  - host: kral.local
+  - host: app.kral.local
 
     http:
 
@@ -22,6 +22,22 @@ spec:
 
           service:
             name: dotnet-webapp
+
+            port:
+              number: 80
+  - host: canary.kral.local
+
+    http:
+
+      paths:
+
+      - path: /
+        pathType: Prefix
+
+        backend:
+
+          service:
+            name: dotnet-webapp-canary
 
             port:
               number: 80
