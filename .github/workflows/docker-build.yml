@@ -25,9 +25,17 @@ jobs:
         run: echo "${{ github.token }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
 
-      - name: Build Docker image
-        run: docker build -t ghcr.io/adamovick/k8s-dotnet-lab:v12 -f docker/Dockerfile .
+      - name: Build webapp image
+        run: docker build --build-arg APP_NAME=webapp -t ghcr.io/adamovick/k8s-dotnet-lab:v12 -f docker/Dockerfile .
 
 
-      - name: Push Docker image
+      - name: Push webapp image
         run: docker push ghcr.io/adamovick/k8s-dotnet-lab:v12
+
+
+      - name: Build blog image
+        run: docker build --build-arg APP_NAME=blog -t ghcr.io/adamovick/kral-blog:v1 -f docker/Dockerfile .
+
+
+      - name: Push blog image
+        run: docker push ghcr.io/adamovick/kral-blog:v1
