@@ -1,0 +1,24 @@
+replicaCount: 3
+
+image:
+  repository: ghcr.io/adamovick/k8s-dotnet-lab
+  tag: v12
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: app.kral.local
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+  limits:
+    cpu: 500m
+    memory: 256Mi

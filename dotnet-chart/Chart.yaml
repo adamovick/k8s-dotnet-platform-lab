@@ -1,0 +1,7 @@
+apiVersion: v2
+name: dotnet-webapp
+description: Kral platform lab dotnet application
+type: application
+
+version: 0.1.0
+appVersion: "v11"
