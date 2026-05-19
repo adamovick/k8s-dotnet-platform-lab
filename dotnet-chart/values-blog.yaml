@@ -2,7 +2,7 @@ nameOverride: blog
 
 image:
   repository: ghcr.io/adamovick/kral-blog
-  tag: v1
+  tag: v2
 
 ingress:
   host: blog.kral.local

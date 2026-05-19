@@ -3,12 +3,32 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var dbHost =
+    Environment.GetEnvironmentVariable("DB_HOST")
+    ?? "localhost";
+
+var dbPort =
+    Environment.GetEnvironmentVariable("DB_PORT")
+    ?? "5432";
+
+var dbName =
+    Environment.GetEnvironmentVariable("DB_NAME")
+    ?? "postgres";
+
+var dbUser =
+    Environment.GetEnvironmentVariable("DB_USER")
+    ?? "postgres";
+
+var dbPassword =
+    Environment.GetEnvironmentVariable("DB_PASSWORD")
+    ?? "kral123";
+
 var connectionString =
-    $"Host={Environment.GetEnvironmentVariable("DB_HOST")};" +
-    $"Port={Environment.GetEnvironmentVariable("DB_PORT")};" +
-    $"Database={Environment.GetEnvironmentVariable("DB_NAME")};" +
-    $"Username={Environment.GetEnvironmentVariable("DB_USER")};" +
-    $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")}";
+    $"Host={dbHost};" +
+    $"Port={dbPort};" +
+    $"Database={dbName};" +
+    $"Username={dbUser};" +
+    $"Password={dbPassword}";
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));

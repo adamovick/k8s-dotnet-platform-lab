@@ -1,10 +1,23 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">KRAL BLOG V1</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">Running on shared platform chart</a>.</p>
-</div>
+<h1>Kral Blog 😄</h1>
+
+<form method="post">
+    <input asp-for="Name" placeholder="isim gir" />
+
+    <button type="submit">
+        Kaydet
+    </button>
+</form>
+
+<hr />
+
+<h2>Kayıtlar</h2>
+
+<ul>
+@foreach (var person in Model.Persons)
+{
+    <li>@person.Id - @person.Name</li>
+}
+</ul>
