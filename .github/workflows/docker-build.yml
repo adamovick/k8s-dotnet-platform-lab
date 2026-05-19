@@ -26,16 +26,16 @@ jobs:
 
 
       - name: Build webapp image
-        run: docker build --build-arg APP_NAME=webapp -t ghcr.io/adamovick/k8s-dotnet-lab:v2 -f docker/Dockerfile .
+        run: docker build --build-arg APP_NAME=webapp -t ghcr.io/adamovick/k8s-dotnet-lab:v3 -f docker/Dockerfile .
 
 
       - name: Push webapp image
-        run: docker push ghcr.io/adamovick/k8s-dotnet-lab:v2
+        run: docker push ghcr.io/adamovick/k8s-dotnet-lab:v3
 
 
       - name: Build blog image
-        run: docker build --build-arg APP_NAME=blog -t ghcr.io/adamovick/kral-blog:v2 -f docker/Dockerfile .
+        run: docker build --build-arg APP_NAME=blog -t ghcr.io/adamovick/kral-blog:v3 -f docker/Dockerfile .
 
 
       - name: Push blog image
-        run: docker push ghcr.io/adamovick/kral-blog:v2
+        run: docker push ghcr.io/adamovick/kral-blog:v3
