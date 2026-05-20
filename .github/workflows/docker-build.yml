@@ -34,8 +34,8 @@ jobs:
 
 
       - name: Build blog image
-        run: docker build --build-arg APP_NAME=blog -t ghcr.io/adamovick/kral-blog:v4 -f docker/Dockerfile .
+        run: docker build --build-arg APP_NAME=blog -t ghcr.io/adamovick/kral-blog:v5 -f docker/Dockerfile .
 
 
       - name: Push blog image
-        run: docker push ghcr.io/adamovick/kral-blog:v4
+        run: docker push ghcr.io/adamovick/kral-blog:v5
